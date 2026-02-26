@@ -33,27 +33,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         if: ${{ github.ref == 'refs/heads/main' }}
         with:
-#          github_token: ${{ secrets.GITHUB_TOKEN }}
-          github_token: ${{ secrets.DEPLOY_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: build
-          user_name: "github-actions[bot]"
-          user_email: "github-actions[bot]@users.noreply.github.com"
-
-      - name: Build for cloudflare-pages
-        run: |
-          sed -i 's|^const site_url\s*=.*|const site_url="https://pranab.pages.dev";|I' docusaurus.config.js
-          bash scripts/build_docusaurus.sh
-
-      - name: Deploy on cloudflare
-        if: ${{ github.event_name != 'schedule' }}
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-#          personal_token: ${{ secrets.CLOUDFLARE_DEPLOY_KEY }}
-          personal_token: ${{ secrets.DEPLOY_TOKEN }}
-          publish_dir: build
-          external_repository: ${{ github.repository_owner }}/${{ secrets.CLOUDFLARE_REPO_NAME }}
-          publish_branch: cf-pages
-          destination_dir: ${{ github.event.repository.name }}
-          enable_jekyll: true
           user_name: "github-actions[bot]"
           user_email: "github-actions[bot]@users.noreply.github.com"
