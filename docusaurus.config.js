@@ -2,7 +2,7 @@
 import { themes } from "prism-react-renderer";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
-const site_url = "https://coteo-cbpf.github.io";
+const site_url = "https://coteo-cbpf.github.io"; 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Quantum Espresso Tutorial",
