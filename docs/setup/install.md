@@ -1,42 +1,37 @@
 ---
-title: Quantum Espresso installation
+title: Working environment setup
 sidebar_label: Installation
-keywords: ["Quantum Espresso installation", "Installing Quantum Espresso", "PWTK"]
+keywords: ["Quantum ESPRESSO installation", "Installing Quantum Espresso", "PWTK"]
 ---
 
-We can install Quantum Espresso on our personal laptops or desktops to run
-relatively less computationally intensive calculations. If we intend to perform
-computationally heavy tasks, we would need access to better computing resources
-with large number of CPU (or GPU) cores, memory, bandwidth, and disc IO.
+# Google Colab
 
-Throughout this tutorial, I will be using a Ubuntu system for smaller
-calculations while other computationally intensive calculations will be done in
-HPC clusters.
+Google Colab is a free cloud-based Jupyter notebook environment that allows you to write and execute Python code directly in your browser. Think of it as a remote machine (on the cloud) with everything pre-setup for you to run python code. There, we are going to prepare jupyter notebooks that run python code to prepare, launch, and post-process Quantum ESPRESSO calculations.  Thus, using Google Colab, it is not required local installation or computational resources.
+
+Access Google Colab here: [colab.research.google.com](colab.research.google.com)
+Sign in with your personal Google account.
+
+# Quantum ESPRESSO installation
+
+Google Colab does not contain Quantum ESPRESSO by default, so we need to install it.
 
 Perhaps the easiest way to install Quantum Espresso is from the package manager
-of respective Linux distribution. This should work fine for us and this is
-recommended option. Following commands are for Ubuntu/Debian. First make sure
-your system is up-to-date.
+of respective Linux distribution. This is the recommended option.
+
+First make sure your system is up-to-date.
 
 ```bash
 sudo apt update && sudo apt upgrade
 ```
 
-Install Quantum Espresso from apt repository:
+Install Quantum ESPRESSO from APT repository:
 ```bash
 sudo apt install --no-install-recommends \
     libfftw3-dev \
     quantum-espresso
 ```
 
-:::tip
-
-Pre-built binaries of Quantum ESPRESSO for Ubuntu is included in my GitHub
-repository [releases](https://github.com/pranabdas/espresso/releases) for easy
-installation. Please refer to the release notes for more details on how to
-install.
-
-:::
+In this Python Camp, you can ignore the rest of this page.
 
 If you want to compile from the source yourself, here are the installation steps
 for the Quantum Espresso version 7.2 in a Ubuntu (LTS 22.04) system. I will be

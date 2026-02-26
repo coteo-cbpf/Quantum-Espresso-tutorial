@@ -11,7 +11,7 @@ module.exports = {
       items: [
         "setup/install",
         // "setup/hpc",
-        "setup/jupyter",
+        // "setup/jupyter",
         "setup/crystal-structure",
         "setup/pseudo-potential",
       ],
