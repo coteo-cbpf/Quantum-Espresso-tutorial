@@ -31,7 +31,36 @@ sudo apt install --no-install-recommends \
     quantum-espresso
 ```
 
-In this Python Camp, you can ignore the rest of this page.
+
+## Installing PWTK
+We will install a very hand scripting package PWscf Toolkit (PWTK). First we
+need to install following dependencies:
+
+```bash
+sudo apt install tcl tcllib
+```
+
+Download the file from - http://pwtk.ijs.si/download/pwtk-2.0.tar.gz
+
+```bash
+wget "http://pwtk.ijs.si/download/pwtk-2.0.tar.gz"
+```
+
+Above command will download and save the file to your current directory. Next we
+need to just un-tar (no need to compile):
+
+```bash
+tar -zxvf pwtk-2.0.tar.gz
+```
+
+Add the path (modify below as appropriate) to `.bashrc`:
+
+```bash
+echo 'export PATH="/root/pwtk-2.0:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+## Not needed for this Python Camp
 
 If you want to compile from the source yourself, here are the installation steps
 for the Quantum Espresso version 7.2 in a Ubuntu (LTS 22.04) system. I will be
@@ -163,30 +192,3 @@ knowledge about high performance computing.
 
 :::
 
-## Installing PWTK
-We will install a very hand scripting package PWscf Toolkit (PWTK). First we
-need to install following dependencies:
-
-```bash
-sudo apt install tcl tcllib
-```
-
-Download the file from - http://pwtk.ijs.si/download/pwtk-2.0.tar.gz
-
-```bash
-wget "http://pwtk.ijs.si/download/pwtk-2.0.tar.gz"
-```
-
-Above command will download and save the file to your current directory. Next we
-need to just un-tar (no need to compile):
-
-```bash
-tar -zxvf pwtk-2.0.tar.gz
-```
-
-Add the path (modify below as appropriate) to `.bashrc`:
-
-```bash
-echo 'export PATH="/root/pwtk-2.0:$PATH"' >> ~/.bashrc
-source ~/.bashrc
-```
