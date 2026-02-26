@@ -2,17 +2,17 @@
 import { themes } from "prism-react-renderer";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
-const site_url = "https://pranabdas.github.io";
+const site_url = "https://coteo-cbpf.github.io";
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Quantum Espresso Tutorial",
   tagline: "Density Functional Theory calculations using Quantum Espresso",
   url: site_url,
-  baseUrl: "/espresso/", // must have a trailing "/"
+  baseUrl: "/Quantum-Espresso-tutorial/", // must have a trailing "/"
   onBrokenLinks: "throw",
   favicon: "img/favicon.png",
-  organizationName: "pranabdas", // Usually your GitHub org/user name.
-  projectName: "espresso", // Usually your repo name.
+  organizationName: "coteo-cbpf", // Usually your GitHub org/user name.
+  projectName: "Quantum-Espresso-tutorial", // Usually your repo name.
   titleDelimiter: "•",
   markdown: {
     hooks: {
