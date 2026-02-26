@@ -6,8 +6,7 @@ keywords: ["Crystal structure", "Crystal structure visualization", "Vesta", "Fin
 ## Structure databases
 
 Density functional theory (DFT) calculations are *ab-initio* meaning the
-calculation is done from the scratch based on given input parameters. We need to
-provide the crystal structure in order to calculate DFT. Crystal structures are
+calculation is done from the scratch based on given input parameters. Although one can use DFT to determine it, typically, we need to provide the crystal structure of the material we want to study: the position and periodic arrangement of atoms. Crystal structures are
 widely available in Crystallographic Information File (`.CIF`) format. There are
 several databases where you can look for crystal structures.
 
@@ -19,7 +18,13 @@ several databases where you can look for crystal structures.
 - [http://crystdb.nims.go.jp/crystdb/search-materials](http://crystdb.nims.go.jp/crystdb/search-materials)
 
 
-In Quantum Espresso, the structure information is provided by `ibrav` number,
+:::note
+
+How many crystal lattices are there? Google it.
+
+:::
+
+In Quantum ESPRESSO, the crystalline lattice information is provided by `ibrav` number,
 and corresponding `celldm` values or lattice constants and cosines of angle
 between the axes. It is also possible to set `ibrav=0` and provide lattice
 vectors in `CELL_PARAMETERS`.
@@ -81,7 +86,7 @@ Running cif2cell command:
 cif2cell file.cif -p quantum-espresso -o inputfile.in
 ```
 
-### Xcrysdens
+<!-- ### Xcrysdens
 
 You can explore the crystal structure, find out k-path and many more using
 **Xcrysdens** application - [http://www.xcrysden.org](http://www.xcrysden.org)
@@ -110,7 +115,7 @@ tar -zxvf xcrysden-1.6.2-linux_x86_64-shared.tar.gz
 ```
 
 If you are on WSL, you need to install X-server (X-ming for Windows) on the host
-and set `export DISPLAY=:0` in your WSL instance.
+and set `export DISPLAY=:0` in your WSL instance. -->
 
 ### QE Input generator
 

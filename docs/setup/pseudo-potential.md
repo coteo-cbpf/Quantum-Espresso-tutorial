@@ -2,12 +2,7 @@
 title: Pseudo potentials
 ---
 
-In Quantum Espresso, pseudopotential replaces the actual electron-ion
-interaction. The pseudopotential describes the atomic nucleus and all the
-electrons except the outermost valence shell. The rapidly changing potential
-field near the atomic core is replaced by a smoother function that simulates the
-potential field far from the core very well. By doing so, it requires less
-number plane wave basis for wavefunction expansion.
+A pseudopotential is an approximation used in electronic structure calculations that replaces the strong Coulomb potential of the nucleus and the effect of tightly-bound core electrons with a weaker, effective potential acting only on the valence electrons . This approach is based on the chemical observation that core electrons are essentially "frozen" and do not participate in bonding, allowing the valence electrons to be described by smoother pseudo-wavefunctions . In Quantum ESPRESSO, a plane-wave pseudopotential code , this approximation is fundamental as it makes calculations computationally feasible by drastically reducing the required number of plane waves and eliminating the need to describe rapid wavefunction oscillations near the nucleus . The code supports modern norm-conserving and ultrasoft pseudopotentials, with ultrasoft types being particularly valuable as they allow for even lower plane-wave energy cutoffs, speeding up calculations without sacrificing accuracy.
 
 :::tip
 
