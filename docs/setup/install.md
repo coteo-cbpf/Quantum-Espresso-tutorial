@@ -33,6 +33,21 @@ sudo apt install --no-install-recommends \
     quantum-espresso
 ```
 
+## Clone the tutorial repository
+
+The quantum espresso input files, jupyter notebooks (containing python code for
+visualizations), and other source files related to this tutorial can be found on
+GitHub: [coteo-cbpf/Quantum-Espresso-tutorial](https://github.dev/coteo-cbpf/Quantum-Espresso-tutorial/).
+
+
+You may clone the repository to your local machine by typing in the terminal:
+
+```bash
+git clone https://github.com/coteo-cbpf/Quantum-Espresso-tutorial.git
+```
+
+Or, if you do not have git installed, download zipped copy of the repository
+[here](https://github.com/coteo-cbpf/Quantum-Espresso-tutorial/archive/refs/heads/main.zip).
 
 ## Installing PWTK
 We will install a very hand scripting package PWscf Toolkit (PWTK). First we
