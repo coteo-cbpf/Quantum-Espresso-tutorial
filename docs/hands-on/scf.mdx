@@ -4,6 +4,9 @@ sidebar_label: SCF calculation
 keywords: ["SCF calculation", "Self consistent field calculation", "Self consistent calculation", "SCF calculation using Quantum Espresso", "Silicon bandstructure", "Quantum Espresso input"]
 ---
 
+The first thing to notice is that Quantum ESPRESSO (QE) is coded in FORTRAN. `NAMELISTS` and `INPUT_CARDS`
+are collections of variables that serve as input for a FORTRAN code.
+
 We need to provide various important parameters for the self consistent
 calculation (solves the Kohn-Sham equation self-consistently) via an input file.
 In QE input files, there are `NAMELISTS` and `INPUT_CARDS`. `NAMELISTS`
@@ -44,16 +47,17 @@ import pw_scf_silicon_in from '!!raw-loader!/src/silicon/pw.scf.silicon.in';
 
 <CodeBlock language="bash" title="src/silicon/pw.scf.silicon.in" showLineNumbers>{pw_scf_silicon_in}</CodeBlock>
 
-I am using the pseudo potential file (`Si.pz-vbc.UPF`) downloaded from [Quantum
+We are using the pseudo potential file (`Si.pz-vbc.UPF`) downloaded from [Quantum
 Espresso Website](https://www.quantum-espresso.org/pseudopotentials).
 
 You must read the **PWscf user manual** for in-depth understanding. Check the
 `qe-x.x/PW/Doc/` folder under your installation directory. Also see
 `INPUT_PW.html` describing various input parameters. PW stands for plane waves.
 
-Run `pw.x` in self consistent mode for silicon.
+This how we run `pw.x` in self consistent mode for silicon in the terminal.
 
 ```bash
+# For serial execution
 pw.x < pw.scf.silicon.in > pw.scf.silicon.out
 # For parallel execution
 mpirun -np 4 pw.x -inp pw.scf.silicon.in > pw.scf.silicon.out
@@ -61,9 +65,9 @@ mpirun -np 4 pw.x -inp pw.scf.silicon.in > pw.scf.silicon.out
 
 :::note
 
-I have added the Quantum ESPRESSO executable directory to the `PATH` environment
+Make sure that you have added the Quantum ESPRESSO executable directory to the `PATH` environment
 variable in bash/zsh profile, otherwise we have to type the full path of `pw.x`
-executable location.
+executable location. If you installed Quantum ESPRESSO via APT, this is already taken care of.
 
 :::
 
@@ -158,6 +162,22 @@ number of Kohn-Sham states=            8
 
 In our calculation we have specified the number of bands = 8. Otherwise, there
 would be 4 bands for 8 electrons in case of non spin-polarized systems.
+
+## Task 1
+
+Create a jupyter notebook (you can call it `task1.ipynb`) to setup your calculation inside of the folder `calculations` of this tutorial.
+Try to do all these steps in the jupyter notebook itself.
+Inside of `calculations`, create a folder called `task 1`.
+Copy to it the QE input file `pw.scf.silicon.in` that you will find in `scr/silicon`.
+
+Create a function that search for a keyword in a file, and updates the value of the variable.
+Update `pseudo_dir` giving the correct path, which is in `../scr/pseudo`.
+
+Now run the QE scf calculation running `pw.x`.
+
+Then, read the output file of the QE scf calculation and print the information that you have seen above: energies, exchange-correlation, k-points, Kohn-Sham states, ... You can search for keywords like:
+
+"!    total energy ", "Exchange-correlation", "number of k points", "Kohn-Sham states", "G-vector sticks info" 
 
 ## Resources
 - https://www.quantum-espresso.org/Doc/pw_user_guide/

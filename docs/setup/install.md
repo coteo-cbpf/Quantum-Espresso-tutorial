@@ -20,11 +20,11 @@ Google Colab does not contain Quantum ESPRESSO by default, so we need to install
 Perhaps the easiest way to install Quantum Espresso is from the package manager
 of respective Linux distribution. This is the recommended option.
 
-First make sure your system is up-to-date.
+<!-- First make sure your system is up-to-date.
 
 ```bash
 sudo apt update && sudo apt upgrade
-```
+``` -->
 
 Install Quantum ESPRESSO from APT repository:
 ```bash
