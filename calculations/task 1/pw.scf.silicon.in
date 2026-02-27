@@ -29,7 +29,7 @@
   ntyp = 1,
 
 ! kinetic energy cutoff for wavefunction in Ry
-  ecutwfc = 30
+  ecutwfc = 40
 
 ! number of bands to calculate
   nbnd = 8
@@ -48,4 +48,4 @@ ATOMIC_POSITIONS (alat)
   Si 0.25 0.25 0.25
 
 K_POINTS (automatic)
-  6 6 6 0 0 0
+ 8 8 8 0 0 0

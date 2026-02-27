@@ -179,6 +179,17 @@ Then, read the output file of the QE scf calculation and print the information t
 
 "!    total energy ", "Exchange-correlation", "number of k points", "Kohn-Sham states", "G-vector sticks info" 
 
+### Tip
+
+```python title="notebooks/silicon-scf.ipynb" showLineNumbers
+x, y = np.loadtxt('../src/silicon/etot-vs-kpoint.dat', delimiter=' ', unpack=True)
+plt.plot(x, y, "o-", markersize=5, label='Etot vs kpoints')
+plt.xlabel('# kpoints')
+plt.ylabel('Etot (Ry)')
+plt.legend(frameon=False)
+plt.show()
+```
+
 ## Resources
 - https://www.quantum-espresso.org/Doc/pw_user_guide/
 - [Quantum Espresso Input Generator](https://www.materialscloud.org/work/tools/qeinputgenerator) (can help creating QE input files)

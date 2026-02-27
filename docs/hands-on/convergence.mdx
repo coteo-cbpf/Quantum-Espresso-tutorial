@@ -4,13 +4,21 @@ title: Convergence testing
 
 import CodeBlock from '@theme/CodeBlock';
 
-## Convergence with cutoff energy using PWTK
+# Task 2: Convergence tests
 
-We can automate the previous self consistent calculation by varying a certain
-parameter. Say we want to check the total energy of the system for various
-values of `ecutwfc`. We can do that by using `pwtk` script.
+In practice, the user of Quantum ESPRESSO needs to make sure that simulation parameters are large enough to ensure the accuracy of the calculation. However, one cannot choose values too high or they will be spending too much computational power. Balance is key.
 
-import si_scf_ecutoff_pwtk from '!!raw-loader!/src/silicon/si_scf_ecutoff.pwtk';
+<!-- ## Convergence with cutoff energy using PWTK -->
+
+Automate the previous self consistent calculation by varying a certain
+parameter. You can use a function that search for a keyword and updates that variable value in the input file.
+Say we want to check the total energy of the system for various
+values of `ecutwfc`. Make a loop varying `ecufwfc` from 12 until 40 in steps of 4 and run the simulation for each value.
+Store the total energy of calculation and plot the result. 
+
+<!-- We can do that by using `pwtk` script. -->
+
+<!-- import si_scf_ecutoff_pwtk from '!!raw-loader!/src/silicon/si_scf_ecutoff.pwtk';
 
 <CodeBlock language="bash" title="src/silicon/si_scf_ecutoff.pwtk" showLineNumbers>{si_scf_ecutoff_pwtk}</CodeBlock>
 
@@ -18,10 +26,10 @@ To run the above script:
 
 ```bash
 pwtk si_scf_ecutoff.pwtk
-```
-
+``` -->
+<!-- 
 Now we can plot the total energy with respect to ecutwfc. The data is in
-`etot-vs-ecutwfc.dat`
+`etot-vs-ecutwfc.dat` -->
 
 We will use matplotlib to make the plots. Here is the python code for plotting:
 
@@ -41,9 +49,11 @@ plt.legend(frameon=False)
 plt.show()
 ```
 
+You should get something similar to this:
+
 <img src={require("../../static/img/etot-vs-ecutwfc.webp").default} class="inv-hue-rot-180" alt="etot-vs-ecutwfc"/>
 
-## Convergence test using UNIX shell script
+<!-- ## Convergence test using UNIX shell script
 
 We can do the convergence test with various parameters. We can calculate the
 total energy of the system by varying various parameters. We will use the shell
@@ -79,7 +89,7 @@ Open the file in **vi** editor. `vi si_script.sh` Now in **vi** editor command
 mode (ESC key), type `:set ff?` This would tell you the file format. Now to
 change file format, use the  command `:set fileformat=unix`
 
-:::
+::: -->
 
 ## Convergence test against the number of k-points
 
@@ -87,7 +97,7 @@ We can run similar convergence test against another parameter, and choose the
 best value of that particular parameter. Here we will try to calculate the
 number of k-points in the Monkhorst-Pack mesh.
 
-import si_scf_kpoints_pwtk from '!!raw-loader!/src/silicon/si_scf_kpoints.pwtk';
+<!-- import si_scf_kpoints_pwtk from '!!raw-loader!/src/silicon/si_scf_kpoints.pwtk';
 
 <CodeBlock language="bash" title="src/silicon/si_scf_kpoints.pwtk" showLineNumbers>{si_scf_kpoints_pwtk}</CodeBlock>
 
@@ -95,7 +105,7 @@ Run pwtk program:
 
 ```bash
 pwtk si_scf_kpoints.pwtk
-```
+``` -->
 
 ```python title="notebooks/silicon-scf.ipynb" showLineNumbers
 x, y = np.loadtxt('../src/silicon/etot-vs-kpoint.dat', delimiter=' ', unpack=True)
@@ -110,9 +120,9 @@ plt.show()
 
 ## Convergence against lattice constant
 
-Calculating total energy with respect to varying lattice constant.
+Compute the total energy with respect the lattice constant.
 
-import si_scf_alat_pwtk from '!!raw-loader!/src/silicon/si_scf_alat.pwtk';
+<!-- import si_scf_alat_pwtk from '!!raw-loader!/src/silicon/si_scf_alat.pwtk';
 
 <CodeBlock language="bash" title="src/silicon/si_scf_alat.pwtk" showLineNumbers>{si_scf_alat_pwtk}</CodeBlock>
 
@@ -120,7 +130,7 @@ Run the above code:
 
 ```
 pwtk si_scf_alat.pwtk
-```
+``` -->
 
 ```python title="notebooks/silicon-scf.ipynb" showLineNumbers
 x, y = np.loadtxt('../src/silicon/etot-vs-alat.dat', delimiter=' ', unpack=True)

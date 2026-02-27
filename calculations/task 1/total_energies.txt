@@ -1,0 +1,8 @@
+ecut: 12   total energy: -15.80599058
+ecut: 16   total energy: -15.83735595
+ecut: 20   total energy: -15.84571802
+ecut: 24   total energy: -15.8490701
+ecut: 28   total energy: -15.85008691
+ecut: 32   total energy: -15.8506484
+ecut: 36   total energy: -15.85100101
+ecut: 40   total energy: -15.85125645
