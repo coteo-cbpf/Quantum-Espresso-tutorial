@@ -8,24 +8,49 @@ Electronic density of states is an important property of a material.
 
 $\rho(E)dE$ = number of electronic states in the energy interval $(E, E + dE)$
 
-Before we can run the Density of States (DOS) calculation, we need
 
-1. Perform fixed-ion self consistent filed (scf) calculation. In plane-wave
-based DFT calculations the electronic density is expressed by functions of the
-form $\exp (i \textbf{k} \cdot \textbf{r})$ with energy given by
-$E = \hbar^2k^2/2m$.
+Calculating the Density of States (DOS) in Quantum ESPRESSO is typically a three-step process, beginning with a ground state calculation and ending with a dedicated post-processing tool.
 
-2. Perform non-self consistent field (nscf) calculation with denser k-point
-grid. A large number of $k$ points are required DOS calculation, as the accuracy
-of DOS depends on the integration in $k$ space.
+### The Three Core Steps for DOS Calculation
 
-3. Finally, the DOS can be determined by integrating the electron density in $k$
-space.
+The standard workflow consists of the following steps:
 
-I have created a new input file (`pw.scf.silicon_dos.in`) which is very much the same as
-our previous scf input file except some parameters are modified. You can find
-all the input files in my [GitHub repository](
-https://github.com/pranabdas/espresso/). We used the lattice constant value that
+1.  **Self-Consistent Field (SCF) Calculation**: Run a ground state calculation using `pw.x` to obtain the converged charge density and wavefunctions for your system . This is the mandatory starting point for all subsequent property calculations.
+
+2.  **Non-Self-Consistent Field (NSCF) Calculation**: Perform a second `pw.x` calculation with `calculation='nscf'` . This step uses the charge density from the SCF run but computes the Kohn-Sham eigenvalues on a **much denser k-point mesh** . This dense sampling is crucial for generating a smooth and accurate DOS plot.
+
+3.  **DOS Calculation with `dos.x`**: Finally, run the `dos.x` executable. This program reads the data produced in the NSCF step and computes the total Density of States, outputting it to a file .
+
+### Key Input Parameters and Considerations
+
+Here are the critical parameters for each step, along with important notes for a successful calculation.
+
+#### For the NSCF (`pw.x`) Calculation
+The input file for this step is similar to your SCF file but with key modifications:
+*   **`calculation`**: Must be set to `'nscf'` .
+*   **`occupations`**: It is highly recommended to set this to `'tetrahedra'` in the `&SYSTEM` namelist. This enables the tetrahedron method for Brillouin zone integration, which is generally more accurate for DOS than smearing techniques .
+*   **K-Points**: Define a much finer k-point grid (e.g., `12 12 12` or higher) than what was used in the SCF calculation .
+
+#### For the DOS (`dos.x`) Calculation
+This program uses a simple `&DOS` namelist. Below are the most important variables, based on the official documentation :
+
+| **Variable** | **Description & Recommendations** |
+| :--- | :--- |
+| `prefix` | The same prefix you used in your SCF and NSCF calculations . |
+| `outdir` | The directory containing the output from your NSCF calculation . |
+| `Emin`, `Emax` | The energy range (in **eV**) for the DOS plot, relative to the Fermi level . |
+| `DeltaE` | The energy step (in **eV**) for the DOS curve. A smaller value gives a higher resolution plot . |
+| `fildos` | The desired name for the output file containing the DOS data . |
+
+#### Important Note on the Integration Method
+`dos.x` automatically determines the method for broadening the discrete energy levels into a continuous DOS:
+*   It will use the **tetrahedron method** if your NSCF calculation used `occupations='tetrahedra'` **and** you do **not** specify a `degauss` value in the `&DOS` namelist .
+*   Otherwise, it will fall back to **Gaussian broadening**, using parameters from either the `&DOS` namelist or the NSCF input file.
+
+## Task 4
+
+We have created a new input file (`scr/silicon/pw.scf.silicon_dos.in`) which is very much the same as
+our previous scf input file except some parameters are modified. We used the lattice constant value that
 we obtained from the relaxation calculation. We should not directly use the
 experimental/real lattice constant values. Depending on the method and
 pseudo-potential, it might result stress in the system. We have increased the
