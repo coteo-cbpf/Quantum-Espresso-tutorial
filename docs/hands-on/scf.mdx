@@ -166,7 +166,28 @@ would be 4 bands for 8 electrons in case of non spin-polarized systems.
 ## Task 1
 
 Create a jupyter notebook (you can call it `tasks.ipynb`) to setup your calculation inside of the folder `calculations` of this tutorial.
-Try to do all these steps in the jupyter notebook itself.
+
+Mount your Google Drive with:
+
+```python
+from google.colab import drive
+drive.mount('/content/drive')
+```
+
+Navegate into the `calculations` folder of the tutorial with:
+
+```python
+import os
+
+# Change directory
+os.chdir('drive/MyDrive/Quantum-Espresso-tutorial/calculations/')
+
+# Check current directory
+os.getcwd()
+```
+
+Now, try for yourself to do the next steps in the jupyter notebook.
+
 Inside of `calculations`, create a folder called `task 1`.
 Copy to it the QE input file `pw.scf.silicon.in` that you will find in `scr/silicon`.
 
