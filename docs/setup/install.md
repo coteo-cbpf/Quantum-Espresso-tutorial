@@ -6,12 +6,23 @@ keywords: ["Quantum ESPRESSO installation", "Installing Quantum Espresso", "PWTK
 
 # Working environment setup
 
+## Download a copy of the tutorial
+
+The quantum espresso input files, jupyter notebooks (containing python code for
+visualizations), and other source files related to this tutorial can be found on
+GitHub: [coteo-cbpf/Quantum-Espresso-tutorial](https://github.com/coteo-cbpf/Quantum-Espresso-tutorial).
+
+
+Download a copy of it and paste it into your Google Drive. [Here is a link to download a zip of the repository.](https://github.com/coteo-cbpf/Quantum-Espresso-tutorial/archive/refs/heads/main.zip)
+
 ## Google Colab
 
 Google Colab is a free cloud-based Jupyter notebook environment that allows you to write and execute Python code directly in your browser. Think of it as a remote machine (on the cloud) with everything pre-setup for you to run python code. There, we are going to prepare jupyter notebooks that run python code to prepare, launch, and post-process Quantum ESPRESSO calculations.  Thus, using Google Colab, it is not required local installation or computational resources.
 
-Access Google Colab here: [colab.research.google.com](colab.research.google.com)
-Sign in with your personal Google account.
+In your Google Drive, navegate until a jupyter notebook, righ-click it, and choose `Open With`. Then, choose the option `Google Colaboratory`.
+
+<!-- Access Google Colab here: [colab.research.google.com](colab.research.google.com)
+Sign in with your personal Google account. -->
 
 ## Quantum ESPRESSO installation
 
@@ -19,6 +30,8 @@ Google Colab does not contain Quantum ESPRESSO by default, so we need to install
 
 Perhaps the easiest way to install Quantum Espresso is from the package manager
 of respective Linux distribution. This is the recommended option.
+
+In the bottom of the Google Colab page, you will see a buttom to open a `Terminal`. 
 
 <!-- First make sure your system is up-to-date.
 
@@ -33,11 +46,11 @@ sudo apt install --no-install-recommends \
     quantum-espresso
 ```
 
-## Clone the tutorial repository
+<!-- ## Clone the tutorial repository
 
 The quantum espresso input files, jupyter notebooks (containing python code for
 visualizations), and other source files related to this tutorial can be found on
-GitHub: [coteo-cbpf/Quantum-Espresso-tutorial](https://github.dev/coteo-cbpf/Quantum-Espresso-tutorial/).
+GitHub: [coteo-cbpf/Quantum-Espresso-tutorial](https://github.com/coteo-cbpf/Quantum-Espresso-tutorial).
 
 
 You may clone the repository to your local machine by typing in the terminal:
@@ -47,9 +60,9 @@ git clone https://github.com/coteo-cbpf/Quantum-Espresso-tutorial.git
 ```
 
 Or, if you do not have git installed, download zipped copy of the repository
-[here](https://github.com/coteo-cbpf/Quantum-Espresso-tutorial/archive/refs/heads/main.zip).
+[here](https://github.com/coteo-cbpf/Quantum-Espresso-tutorial/archive/refs/heads/main.zip). -->
 
-## Installing PWTK
+<!-- ## Installing PWTK
 We will install a very hand scripting package PWscf Toolkit (PWTK). First we
 need to install following dependencies:
 
@@ -75,5 +88,5 @@ Add the path (modify below as appropriate) to `.bashrc`:
 ```bash
 echo 'export PATH="/root/pwtk-2.0:$PATH"' >> ~/.bashrc
 source ~/.bashrc
-```
+``` -->
 

@@ -1,6 +1,6 @@
 &CONTROL
 ! we want to perform self consistent field calculation
-  calculation = 'vc-relax'
+  calculation = 'scf',
 
 ! prefix is reference to the output files
   prefix = 'silicon',
@@ -20,7 +20,7 @@
   ibrav =  2,
 
 ! Lattice constant in BOHR
-  celldm(1) = 10.6
+  celldm(1) = 10.26,
 
 ! number of atoms in an unit cell
   nat =  2,
@@ -29,7 +29,7 @@
   ntyp = 1,
 
 ! kinetic energy cutoff for wavefunction in Ry
-  ecutwfc = 40
+  ecutwfc = 30
 
 ! number of bands to calculate
   nbnd = 8
@@ -40,12 +40,6 @@
   mixing_beta = 0.6
 /
 
-&ions
-/
-
-&cell
-/
-
 ATOMIC_SPECIES
   Si 28.086 Si.pz-vbc.UPF
 
@@ -54,4 +48,4 @@ ATOMIC_POSITIONS (alat)
   Si 0.25 0.25 0.25
 
 K_POINTS (automatic)
- 8 8 8 0 0 0
+  6 6 6 0 0 0
