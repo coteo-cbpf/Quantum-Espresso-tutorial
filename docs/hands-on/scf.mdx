@@ -165,21 +165,29 @@ would be 4 bands for 8 electrons in case of non spin-polarized systems.
 
 ## Task 1
 
-Create a jupyter notebook (you can call it `task1.ipynb`) to setup your calculation inside of the folder `calculations` of this tutorial.
+Create a jupyter notebook (you can call it `tasks.ipynb`) to setup your calculation inside of the folder `calculations` of this tutorial.
 Try to do all these steps in the jupyter notebook itself.
 Inside of `calculations`, create a folder called `task 1`.
 Copy to it the QE input file `pw.scf.silicon.in` that you will find in `scr/silicon`.
 
 Create a function that search for a keyword in a file, and updates the value of the variable.
-Update `pseudo_dir` giving the correct path, which is in `../scr/pseudo`.
+Update `pseudo_dir` giving the correct path, which is in `../../src/pseudos`.
 
 Now run the QE scf calculation running `pw.x`.
 
-Then, read the output file of the QE scf calculation and print the information that you have seen above: energies, exchange-correlation, k-points, Kohn-Sham states, ... You can search for keywords like:
+Then, read the output file of the QE scf calculation and print the information that you have seen above: energies, exchange-correlation, k-points, Kohn-Sham states, ... You can search for keywords like (but also check your output file):
 
 "!    total energy ", "Exchange-correlation", "number of k points", "Kohn-Sham states", "G-vector sticks info" 
 
-### Tip
+Try to do a function to search for a keyword and print a few lines before and/or after the keyword.
+
+:::tip Task-solutions
+
+Inside of the directory `notebooks`, we are providing `tasks-solutions.ipynb`. You can use it to help yourself building your own solution to the problems. However, please avoid just copying and pasting it. Before using the solutions, we would recommend you to try searching for help with an AI tool, such as DeepSeek or ChatGPT.
+
+:::
+
+<!-- ### Tip
 
 ```python title="notebooks/silicon-scf.ipynb" showLineNumbers
 x, y = np.loadtxt('../src/silicon/etot-vs-kpoint.dat', delimiter=' ', unpack=True)
@@ -188,7 +196,7 @@ plt.xlabel('# kpoints')
 plt.ylabel('Etot (Ry)')
 plt.legend(frameon=False)
 plt.show()
-```
+``` -->
 
 ## Resources
 - https://www.quantum-espresso.org/Doc/pw_user_guide/
