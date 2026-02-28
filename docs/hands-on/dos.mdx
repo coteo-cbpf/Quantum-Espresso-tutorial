@@ -51,9 +51,11 @@ This program uses a simple `&DOS` namelist. Below are the most important variabl
 
 We have created a new input file (`scr/silicon/pw.scf.silicon_dos.in`) which is very much the same as
 our previous scf input file except some parameters are modified. We used the lattice constant value that
-we obtained from the relaxation calculation. We should not directly use the
+we obtained from the relaxation calculation.
+ <!-- We should not directly use the
 experimental/real lattice constant values. Depending on the method and
-pseudo-potential, it might result stress in the system. We have increased the
+pseudo-potential, it might result stress in the system.  -->
+We have increased the
 `ecutwfc` to have better precision. We run the scf calculation:
 
 ```bash
