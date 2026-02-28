@@ -3,14 +3,55 @@ title: Structure optimization
 keywords: ["Structural optimization using DFT", "Structural optimization using Density Functional Theory", "Structural optimization in Quantum Espresso", "Cell relaxation"]
 ---
 
-# Task 3: Structure optimization
-
 import CodeBlock from '@theme/CodeBlock';
 
+# Task 3: Structure optimization
+
+## Determining lattice constant
+
+Determine the lattice constant of Silicon by computing the total energy as a function of the lattice constant.
+You can try a lattice range from 9.6 to 10.8 Borh.
+
+The lattice constant that minimizes the total energy is your optimal lattice constant.
+
+<!-- import si_scf_alat_pwtk from '!!raw-loader!/src/silicon/si_scf_alat.pwtk';
+
+<CodeBlock language="bash" title="src/silicon/si_scf_alat.pwtk" showLineNumbers>{si_scf_alat_pwtk}</CodeBlock>
+
+Run the above code:
+
+```
+pwtk si_scf_alat.pwtk
+``` -->
+
+```python title="notebooks/silicon-scf.ipynb" showLineNumbers
+x, y = np.loadtxt('../src/silicon/etot-vs-alat.dat', delimiter=' ', unpack=True)
+plt.plot(x, y, "o-", markersize=5, label='Etot vs alat')
+plt.xlabel('alat (Bohr)')
+plt.ylabel('Etot (Ry)')
+plt.legend(frameon=False)
+plt.show()
+```
+
+<img src={require("../../static/img/etot-vs-alat.webp").default} class="inv-hue-rot-180" alt="etot-vs-alat"/>
+
+## Further structure optimization in Quantum ESPRESSO
+
+What we have just done ourselves, can be done by Quantum ESPRESSO using its structure optimization modes.
 There are two types of structural optimization calculations in Quantum espresso:
 (1) **relax**: where only the atomic positions are allowed to vary, and (2)
 **vc-relax**: which allows to vary both the atomic positions and lattice
 constants.
+
+For these calculations, one must add this to the input file:
+
+```
+&ions
+/
+
+&cell
+/
+```
 
 import si_relax_in from '!!raw-loader!/src/silicon/si_relax.in';
 

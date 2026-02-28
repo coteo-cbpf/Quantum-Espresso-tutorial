@@ -118,31 +118,6 @@ plt.show()
 
 <img src={require("../../static/img/etot-vs-kpoints.webp").default} class="inv-hue-rot-180" alt="etot-vs-kpoints"/>
 
-## Convergence against lattice constant
-
-Compute the total energy with respect the lattice constant.
-
-<!-- import si_scf_alat_pwtk from '!!raw-loader!/src/silicon/si_scf_alat.pwtk';
-
-<CodeBlock language="bash" title="src/silicon/si_scf_alat.pwtk" showLineNumbers>{si_scf_alat_pwtk}</CodeBlock>
-
-Run the above code:
-
-```
-pwtk si_scf_alat.pwtk
-``` -->
-
-```python title="notebooks/silicon-scf.ipynb" showLineNumbers
-x, y = np.loadtxt('../src/silicon/etot-vs-alat.dat', delimiter=' ', unpack=True)
-plt.plot(x, y, "o-", markersize=5, label='Etot vs alat')
-plt.xlabel('alat (Bohr)')
-plt.ylabel('Etot (Ry)')
-plt.legend(frameon=False)
-plt.show()
-```
-
-<img src={require("../../static/img/etot-vs-alat.webp").default} class="inv-hue-rot-180" alt="etot-vs-alat"/>
-
 
 ## Note on CPU time
 

@@ -1,6 +1,6 @@
 &CONTROL
 ! we want to perform self consistent field calculation
-  calculation = 'scf',
+  calculation = 'vc-relax'
 
 ! prefix is reference to the output files
   prefix = 'silicon',
@@ -20,7 +20,7 @@
   ibrav =  2,
 
 ! Lattice constant in BOHR
-  celldm(1) = 10.26,
+  celldm(1) = 10.6
 
 ! number of atoms in an unit cell
   nat =  2,
@@ -38,6 +38,12 @@
 &ELECTRONS
 ! Mixing factor used in the self-consistent method
   mixing_beta = 0.6
+/
+
+&ions
+/
+
+&cell
 /
 
 ATOMIC_SPECIES
