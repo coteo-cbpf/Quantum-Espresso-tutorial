@@ -18,20 +18,6 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Theory",
-      collapsed: true,
-      link: {
-        type: "generated-index",
-      },
-      items: [
-        "theory/problem-statement",
-        "theory/hartree-fock",
-        "theory/dft",
-        "theory/wannier",
-      ],
-    },
-    {
-      type: "category",
       label: "Hands-on",
       collapsed: true,
       link: {
@@ -58,6 +44,20 @@ module.exports = {
         "hands-on/phonon",
         "hands-on/wannier",
         "hands-on/molecular-dynamics-pw",
+      ],
+    },
+    {
+      type: "category",
+      label: "Theory",
+      collapsed: true,
+      link: {
+        type: "generated-index",
+      },
+      items: [
+        "theory/problem-statement",
+        "theory/hartree-fock",
+        "theory/dft",
+        "theory/wannier",
       ],
     },
     "resources",
