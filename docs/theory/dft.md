@@ -177,8 +177,7 @@ correlation functional that truly describes real systems.
 
 ## Plane-wave expansion
 
-The wavefunctions are expanded in terms of a basis set. In quantum espresso, the
-the basis function is plane waves. There exists other DFT codes that use
+The wavefunctions are expanded in terms of a basis set. In quantum espresso, the basis function is plane waves. There exists other DFT codes that use
 localized basis function as well. Plane waves are simpler but generally requires
 much large number of them compared to other localized basis sets.
 

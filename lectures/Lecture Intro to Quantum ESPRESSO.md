@@ -8,7 +8,10 @@
 ---
 
 ### What is Quantum ESPRESSO?
-- **QE** is an integrated suite of open-source computer codes for electronic-structure calculations and materials modeling .
+- **QE** is an integrated suite of open-source computer codes for electronic-structure calculations and materials modeling: [https://www.quantum-espresso.org/](https://www.quantum-espresso.org/)
+
+<img src="figures/Quantum_ESPRESSO_logo.jpg" alt="Quantum ESPRESSO logo" width="400">
+
 - It is based on **Density Functional Theory (DFT)**, using a basis of **plane waves** and the **pseudopotential** method .
 - The name stands for **"opEn Source Package for Research in Electronic Structure, Simulation, and Optimization"** .
 - It is a major code in computational materials science, building on methodologies like Car-Parrinello molecular dynamics and Density-Functional Perturbation Theory .
@@ -27,12 +30,60 @@
 ### The Core Methodology
 - **Density-Functional Theory (DFT):** The fundamental framework for calculating the electronic ground state of a system.
 - **Plane Waves (PW):** A complete and unbiased basis set used to expand the Kohn-Sham orbitals. This is ideal for periodic systems like crystals.
+
+Kohn-sham equation:
+
+$$\left[-\frac{\hbar^2}{2m_e}\nabla^2 + V_{\text{KS}}(\mathbf{r})\right] \psi_i(\mathbf{r}) = \epsilon_i \psi_i(\mathbf{r})$$
+
+The wavefunctions are expanded in terms of a basis set. In quantum espresso, the basis function is plane waves. There exists other DFT codes that use localized basis function as well. Plane waves are simpler but generally requires much large number of them compared to other localized basis sets.
+
+$$
+\psi_i(\textbf{r}) = \sum_{\alpha = 1} ^{N_b} c_{i\alpha} f_{\alpha}(\textbf{r})
+$$
+
+Where $N_b$ is the size basis set. Then the eigenvalue equation becomes:
+
+$$
+\sum_{\beta} \mathcal{H}_{\alpha\beta} c_{i\beta} = \epsilon_i c_{i\alpha}
+$$
+
+$$
+\Rightarrow
+\begin{pmatrix}
+\mathcal{H}_{11} &  ... & \mathcal{H}_{1b} \\
+... & ... & ... \\
+\mathcal{H}_{b1} & ... & \mathcal{H}_{bb}
+\end{pmatrix}
+\begin{pmatrix}
+c_1 \\
+... \\
+c_b
+\end{pmatrix}
+= \epsilon_i
+\begin{pmatrix}
+c_1 \\
+... \\
+c_b
+\end{pmatrix}
+$$
+
+This is a linear algebra problem, solving the above involves diagonalization of ($N_b \times N_b$) matrix which gives us corresponding eigenvalue and eigenfunction.
+
 - **Pseudopotentials:** These replace the strong ionic potential and core electrons with a weaker effective potential acting on the valence electrons. This significantly reduces the computational cost and the size of the plane-wave basis set required . QE supports:
     - Norm-conserving pseudopotentials
     - Ultrasoft (US) pseudopotentials (Vanderbilt type)
     - Projector Augmented Wave (PAW) method 
 
----
+Libraries: [Standard solid-state pseudopotentials SSSP](https://legacy.materialscloud.org/discover/sssp/table/efficiency), https://www.pseudo-dojo.org/, etc.
+
+<img src="figures/pseudopotential.png" alt="Pseudopotential" width="400">
+
+
+In the Kohn-Sham equations, electrons with higher angular momentum ($l>0$) are kept away from the nucleus by a centrifugal barrier ($\propto l(l+1)/2r^2$). Near the nucleus, this barrier is much larger than the nuclear potential, forcing their wavefunctions to vanish ($\propto r^l$). Only $l=0$ (s-electrons) can have a nonzero value at the nucleus.
+
+The all-electron wavefunction oscillates rapidly near the nucleus because the real nuclear potential is singular (very deep). To eliminate these costly oscillations in a plane-wave basis, we construct a pseudopotential that is smooth and has no singularity. This is achieved by designing a smooth pseudo-wavefunction first (which has no nodes and matches the true wavefunction outside a cutoff radius $r_c$), and then inverting the Schrödinger equation to find the potential that produces it. The resulting potential often has a characteristic "bump" that prevents the wavefunction from oscillating.
+
+
 
 ### Main Features: Ground-State & Structure
 Quantum ESPRESSO is modular. The core components handle a wide variety of calculations.
@@ -42,7 +93,7 @@ Quantum ESPRESSO is modular. The core components handle a wide variety of calcul
     - Supports collinear and noncollinear magnetism, including spin-orbit coupling .
     - Berry phase calculations for polarization .
 - **Structure Optimization & Dynamics:**
-    - **Structural optimization** (BFGS, damped dynamics) to find stable atomic configurations .
+    - **Structural optimization** (BFGS, Broyden–Fletcher–Goldfarb–Shanno algorithm. It is a quasi-Newton method used for structural optimization) to find stable atomic configurations .
     - **Born-Oppenheimer Molecular Dynamics (BOMD)** and **Car-Parrinello Molecular Dynamics (CPMD)** .
     - **Nudged Elastic Band (NEB)** method for finding reaction pathways and transition states .
 
