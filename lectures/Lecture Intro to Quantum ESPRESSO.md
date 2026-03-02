@@ -83,7 +83,42 @@ In the Kohn-Sham equations, electrons with higher angular momentum ($l>0$) are k
 
 The all-electron wavefunction oscillates rapidly near the nucleus because the real nuclear potential is singular (very deep). To eliminate these costly oscillations in a plane-wave basis, we construct a pseudopotential that is smooth and has no singularity. This is achieved by designing a smooth pseudo-wavefunction first (which has no nodes and matches the true wavefunction outside a cutoff radius $r_c$), and then inverting the Schrödinger equation to find the potential that produces it. The resulting potential often has a characteristic "bump" that prevents the wavefunction from oscillating.
 
+Here is a concise explanation of why calculations are performed in reciprocal space rather than real space in Quantum ESPRESSO, formatted for your lecture.
 
+### The Fourier Transform
+
+The continuous Fourier transform pair is defined as:
+
+$$
+F(\mathbf{k}) = \int_{-\infty}^{\infty} f(\mathbf{r}) e^{-i\mathbf{k} \cdot \mathbf{r}} d\mathbf{r}
+$$
+
+$$
+f(\mathbf{r}) = \frac{1}{(2\pi)^3} \int_{-\infty}^{\infty} F(\mathbf{k}) e^{i\mathbf{k} \cdot \mathbf{r}} d\mathbf{k}
+$$
+
+Here, $f(\mathbf{r})$ is a function in real space, and $F(\mathbf{k})$ is its representation in reciprocal (Fourier) space.
+
+where $V(\mathbf{r})$ is the periodic potential in real space, $\mathbf{G}$ are the reciprocal lattice vectors, and $\tilde{V}(\mathbf{G})$ are the Fourier coefficients.
+
+### Why Reciprocal Space? The Power of k-Space
+
+In principle, DFT calculations could be performed entirely in real space, but for periodic solids, reciprocal space is overwhelmingly more efficient for three key reasons:
+
+**1. Bloch's Theorem Diagonalizes the Problem**
+In a perfect crystal, the potential is periodic. Bloch's Theorem states that for each of the *N* electrons in the system, we do not have to solve *N* separate equations. Instead, we solve a small set of equations at each **k-point** in the Brillouin zone. Because electrons at different k-points are independent, the problem becomes perfectly parallel (which is why `-npool` is so effective).
+
+**2. Plane Waves are Diagonal in Reciprocal Space**
+The kinetic energy operator in the Kohn-Sham equations is much simpler in reciprocal space. While it involves a second derivative in real space ($-\frac{\hbar^2}{2m}\nabla^2$), in reciprocal space it becomes a simple multiplication:
+
+$$
+-\frac{\hbar^2}{2m}\nabla^2 e^{i\mathbf{G}\cdot\mathbf{r}} = +\frac{\hbar^2}{2m}|\mathbf{G}|^2 e^{i\mathbf{G}\cdot\mathbf{r}}
+$$
+
+This turns a difficult differential equation into a manageable linear algebra problem.
+
+**3. Efficiency: Sampling Instead of Gridding**
+In real space, to describe an extended crystal, you would need a grid large enough to encompass the entire macroscopic sample (billions of atoms). In reciprocal space, we only need to sample the small, primitive unit cell. The infinite real-space crystal is represented by a finite sum over reciprocal lattice vectors $\mathbf{G}$ and a manageable number of **k-points**.
 
 ### Main Features: Ground-State & Structure
 Quantum ESPRESSO is modular. The core components handle a wide variety of calculations.
@@ -129,7 +164,6 @@ The input for the main `pw.x` executable is organized into namelists. Let's look
     - `calculation = 'vc-relax'` : Variable-cell relaxation (optimize cell shape/volume).
     - `calculation = 'nscf'` : Non-self-consistent (for bands, DOS).
     - `restart_mode`: Controls whether to start fresh (`'from_scratch'`) or restart (`'restart'`) .
-    - `tstress` / `tprnfor`: Logical flags to calculate stresses and forces .
     - `pseudo_dir`: Directory containing the pseudopotential files .
     - `outdir` / `wfcdir`: Directories for temporary and wavefunction files .
 
