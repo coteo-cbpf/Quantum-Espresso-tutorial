@@ -7,3 +7,4 @@
 This repository contains the various input files and jupyter notebooks (for post
 processing and plotting) for this tutorial. Please follow the tutorial at https://coteo-cbpf.github.io/Quantum-Espresso-tutorial
 
+Github reposity of the DFT intro and Spin Dynamics: https://github.com/coteo-cbpf/dft_sd_workshop
