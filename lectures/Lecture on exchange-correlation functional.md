@@ -78,7 +78,7 @@ Formally, $E_{\text{xc}}[n]$ is defined by the equation above. It contains:
 - **Correlation energy:** Arising from the instantaneous Coulomb repulsion between electrons, which causes their motions to be correlated.
 - **A kinetic energy correction:** The difference between the kinetic energy of the true interacting system and the fictitious non-interacting system.
 
-If the exact form of $E_{\text{xc}}[n]$ were known, the Kohn-Sham approach would yield the exact ground state energy and density. Its existence is proven, but its exact form is not known.
+**If the exact form of $E_{\text{xc}}[n]$ were known, the Kohn-Sham approach would yield the exact ground state energy and density. Its existence is proven, but its exact form is not known.**
 
 
 The genius of this approach is twofold: first, it replaces the impossible task of solving a single 3N-dimensional Schrödinger equation with the tractable problem of solving $N$ coupled three-dimensional equations; second, it strategically isolates the computationally difficult many-body effects. By explicitly computing the independent-particle kinetic energy $T_s[n]$ and the long-range Hartree term exactly from the orbitals and density, the Kohn-Sham scheme ensures that only the remaining exchange-correlation functional $E_{\text{xc}}[n]$—a relatively small but crucial component of the total energy—must be approximated. This allows $E_{\text{xc}}[n]$ to be reasonably modeled as a local or semi-local functional of the density, forming the foundation of practical DFT calculations.
