@@ -125,18 +125,18 @@ The exchange interaction is the fundamental quantum mechanical mechanism respons
 
 ### 1. Physical Origin: Spin-Dependent Coulomb Interaction
 
-At its core, the exchange interaction describes how the Coulomb repulsion between electrons depends on the relative orientation of their spins . This spin dependence emerges from a fundamental constraint: electrons are indistinguishable fermions, and their total wavefunction must be antisymmetric under particle exchange.
+At its core, the exchange interaction describes how the Coulomb repulsion between electrons depends on the relative orientation of their spins. This spin dependence emerges from a fundamental constraint: electrons are indistinguishable fermions, and their total wavefunction must be antisymmetric under particle exchange.
 
-When two electrons occupy overlapping orbitals, their spatial wavefunction symmetry is strictly coupled to their spin state:
+### 2. Mathematical Derivation: The Two-Electron System
 
-- **Spin singlet (S = 0, antiparallel spins)** → Spatially symmetric wavefunction → Electrons can approach each other closely → Higher Coulomb repulsion energy
-- **Spin triplet (S = 1, parallel spins)** → Spatially antisymmetric wavefunction → Electrons are kept apart by the Pauli principle → Lower Coulomb repulsion energy 
 
-**Singlet state** (S = 0, antisymmetric):
+Linear combination states that are eigenstates of $\mathbf S^2$ and $S^z$:
+
+**Singlet state** (S = 0, antisymmetric): → Spatially symmetric wavefunction → Electrons can occupy the same region of space → Higher Coulomb repulsion energy
 
 $ |0,0\rangle = \frac{1}{\sqrt{2}}\left( |\!\uparrow\downarrow\rangle - |\!\downarrow\uparrow\rangle \right) $ 
 
-**Triplet states** (S = 1, symmetric):
+**Triplet states** (S = 1, symmetric): → Spatially antisymmetric wavefunction → Electrons are kept apart by the Pauli principle → Lower Coulomb repulsion energy
 
 $ |1,1\rangle = |\!\uparrow\uparrow\rangle $
 
@@ -144,13 +144,13 @@ $ |1,0\rangle = \frac{1}{\sqrt{2}}\left( |\!\uparrow\downarrow\rangle + |\!\down
 
 $ |1,-1\rangle = |\!\downarrow\downarrow\rangle $ 
 
+
+
 This difference in Coulomb energy between parallel and antiparallel spin configurations is the **exchange energy**. The effect is purely electrostatic in origin—electrons do not directly "sense" each other's spins; rather, the spin configuration determines how they distribute in space to minimize repulsion .
 
-### 2. Mathematical Derivation: The Two-Electron System
+#### 2.1 Hydrogen molecule with two electrons
 
 The exchange interaction is most clearly demonstrated using the hydrogen molecule as a model system . Consider two electrons (1 and 2) occupying orthogonal orbitals $\Phi_a$ and $\Phi_b$ centered on two atoms.
-
-#### 2.1 Hamiltonian
 
 The full Hamiltonian for this system is:
 
@@ -160,7 +160,7 @@ where $\mathcal{H}^{(0)}$ represents the non-interacting atoms and $\mathcal{H}^
 
 $$ \mathcal{H}^{(1)} = \frac{e^2}{R_{ab}} + \frac{e^2}{r_{12}} - \frac{e^2}{r_{a2}} - \frac{e^2}{r_{b1}} $$
 
-Here, $R_{ab}$ is the internuclear distance, $r_{12}$ is the electron-electron distance, and $r_{a2}$ represents the distance between electron 2 and nucleus a .
+Here, $R_{ab}$ is the internuclear distance, $r_{12}$ is the electron-electron distance, and $r_{a2}$ represents the distance between electron 2 and nucleus a.
 
 #### 2.2 Spatial Wavefunctions
 
@@ -198,9 +198,9 @@ $ \mathcal{S} = \int \Phi_b^*(\vec{r}_2)\Phi_a(\vec{r}_2) d^3r_2 $ | (5)
 
 $ J_{\text{ex}} = \int \Phi_a^*(\vec{r}_1)\Phi_b^*(\vec{r}_2) \left( \frac{1}{R_{ab}} + \frac{1}{r_{12}} - \frac{1}{r_{a1}} - \frac{1}{r_{b2}} \right) \Phi_b(\vec{r}_1)\Phi_a(\vec{r}_2) d^3r_1 d^3r_2 $ | (6) 
 
-The exchange integral $J_{\text{ex}}$ has no simple physical interpretation but arises entirely from the antisymmetry requirement . It represents the energy contribution from exchanging the two electrons between orbitals.
+The exchange integral $J_{\text{ex}}$ has no simple physical interpretation but arises entirely from the antisymmetry requirement. It represents the energy contribution from exchanging the two electrons between orbitals.
 
-### 3. The Heisenberg Hamiltonian
+### 3. The Heisenberg Hamiltonian: modelo efetivo
 
 The critical insight, developed by Dirac, was that the spin-dependent energy difference can be represented as an effective spin-spin interaction . From Eq. (3), the energy difference between triplet and singlet states is:
 
@@ -212,9 +212,9 @@ This energy splitting can be reproduced by an effective Hamiltonian acting on sp
 
 $ \mathcal{H}_{\text{ex}} = -2J_{ab} \hat{\mathbf{S}}_i \cdot \hat{\mathbf{S}}_j $ | (8) 
 
-where $J_{ab}$ is the **exchange constant**, related to the microscopic integrals by :
+where $J_{ij}$ is the **exchange constant**, related to the microscopic integrals by :
 
-$ J_{ab} = \frac{J_{\text{ex}} - C\mathcal{S}^2}{1 - \mathcal{S}^4} $ | (9) 
+$ J_{ij} = \frac{J_{\text{ex}} - C\mathcal{S}^2}{1 - \mathcal{S}^4} $ | (9) 
 
 For a many-electron system, this generalizes to the **Heisenberg Hamiltonian** :
 
