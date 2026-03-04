@@ -42,15 +42,13 @@ In an atom, these orbital and spin angular momenta combine to give the total mag
 
 $$\mathbf{m} = \frac{\mu_B}{\hbar} \sum_j(\mathbf{L}_j + 2\mathbf{S}_j)$$
 
-In atoms with completely filled electron shells, the total angular momentum cancels out to zero. **For every electron spinning up, there's one spinning down, and for every orbital motion in one direction, there's one in the opposite direction.** These atoms have no permanent magnetic dipole moment and are called **diamagnetic**.
+<!-- In atoms with completely filled electron shells, the total angular momentum cancels out to zero. **For every electron spinning up, there's one spinning down, and for every orbital motion in one direction, there's one in the opposite direction.** These atoms have no permanent magnetic dipole moment and are called **diamagnetic**. -->
 
 Magnetism requires **unpaired electrons**. In atoms with partially filled shells, like the transition metals iron, cobalt, and nickel, there are unpaired electrons. Their spin and orbital moments don't cancel, giving the atom a net magnetic moment.
 
-## Isolated atom
+## Magnetization of isolated atom
 
-The magnetic moment of an atom originates from the orbital and spin angular momenta of its electrons. In a hydrogen atom, each electron state is characterized by four quantum numbers:
-
-<img src="figures/Atomic-orbitals.png" alt="Atomic orbitals" width="800">
+Hydrogen atom orbitals: In a hydrogen atom, each electron state is characterized by four quantum numbers:
 
 - **Principal quantum number $n$**: Associated with the number of radial nodes in the wavefunction
 - **Orbital angular momentum quantum number $l$** (azimuthal): Satisfies $\langle L^2 \rangle = \hbar^2 l(l+1)$, where $0 \leq l \leq n-1$
@@ -58,6 +56,8 @@ The magnetic moment of an atom originates from the orbital and spin angular mome
 - **Spin quantum number $m_s$**: Associated with the $z$-component of spin angular momentum, $\langle S^z \rangle = \hbar m_s$, where $m_s = \pm 1/2$
 
 States with the same $n$ form a **shell**. Within each shell, states with the same $l$ form a **subshell** (labeled $s, p, d, f$ for $l = 0,1,2,3$). Each orbital (specific $m_l$) has two channels for the two possible $m_s$ values.
+
+<img src="figures/Atomic-orbitals.png" alt="Atomic orbitals" width="800">
 
 ### Ground State Determination and Hund's Rules
 
@@ -72,7 +72,9 @@ For an isolated atom in its ground state, electrons fill orbitals according to:
 
 - **Important consequence**: Full subshells have no net angular momentum—for every electron with $m_s$, there's one with $-m_s$, and similarly for $m_l$. This explains why noble gases are non-magnetic.
 
-- **Most elements have net magnetic moments when isolated**: Since most atoms have incomplete subshells, they possess net angular momentum and therefore magnetic moments
+- **Most elements have net magnetic moments when isolated**: Since most atoms have incomplete subshells, they possess net angular momentum and therefore magnetic moments.
+
+* Despite that, how often materials in your daily life are magnetic?
 
 ## In solids: localized magnetism
 
