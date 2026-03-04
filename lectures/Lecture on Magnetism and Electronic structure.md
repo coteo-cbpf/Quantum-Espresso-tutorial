@@ -2,7 +2,7 @@
 
 ## Introduction
 
-We're all familiar with magnets – they're on our refrigerators, in our speakers, and inside every hard drive. But if you take a bar magnet and cut it in half, you don't get one north pole and one south pole. You get two smaller, complete magnets. Cut those in half again, and you get even more magnets. This hints that the source of magnetism is not some macroscopic property, but is fundamental to the very atoms that make up the material.
+We're all familiar with magnets – they're on our refrigerators, in our speakers, inside every hard drive, in electric power generation, etc. But if you take a bar magnet and cut it in half, you don't get one north pole separated from one south pole. You get two smaller, complete magnets. Cut those in half again, and you get even more magnets. This hints that the source of magnetism is not some macroscopic property, but is fundamental to the very atoms that make up the material.
 
 Here, we're going to dive deep into the atomic and electronic world to answer a seemingly simple question: **why are some materials magnetic?**
 
@@ -10,9 +10,11 @@ Here, we're going to dive deep into the atomic and electronic world to answer a 
 
 The story begins not with the atom as a whole, but with its electrons. For a long time, we understood that electric currents could create magnetic fields, as described by Ampère. But what creates a magnetic field in a permanent magnet, where there's no obvious battery or current?
 
-The answer lies in the inherent properties of the electron itself. When a magnetic moment $\mathbf{m}$ is placed in an external magnetic field $\mathbf{B}$, it experiences a torque that tends to align it with the field:
+The answer lies in the inherent properties of the electron itself. When a magnetic **dipole** moment $\mathbf{m}$ is placed in an external magnetic field $\mathbf{B}$, it experiences a torque that tends to align it with the field:
 
 $$\pmb{\tau} = \mathbf{m} \times \mathbf{B}$$
+
+$$\pmb{F} = q \mathbf{E}$$
 
 This torque is fundamental to understanding how magnetic moments respond to applied fields. The collective behavior of many such moments leads to the macroscopic property of **magnetization** $\mathbf{M}(\mathbf{r})$, defined as the volumetric density of magnetic moments:
 
